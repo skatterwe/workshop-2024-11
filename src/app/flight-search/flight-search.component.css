@@ -1,3 +1,7 @@
 .header {
   padding: 24px;
 }
+
+.selected {
+  background-color: moccasin;
+}

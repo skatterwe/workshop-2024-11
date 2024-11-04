@@ -20,9 +20,15 @@ export class FlightSearchComponent {
 
   flightService = inject(FlightService);
 
+  selectedFlight:  number | null = null
+
   searchFlight() {
     this.flightService.searchFlights(this.from, this.to).subscribe((flights) => {
       this.flights = flights
     });
+  }
+
+  select(flight: Flight) {
+    this.selectedFlight = flight.id
   }
 }
