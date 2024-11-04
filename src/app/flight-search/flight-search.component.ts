@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {HighlightDirective} from "../highlight.directive";
+import {FlightService} from "./flight.service";
 
 @Component({
   selector: 'app-flight-search',
@@ -17,17 +18,11 @@ export class FlightSearchComponent {
   from = '';
   to = '';
 
-  httpClient = inject(HttpClient);
+  flightService = inject(FlightService);
 
   searchFlight() {
-    const url = 'https://demo.angulararchitects.io/api/flight';
-
-    const headers = new HttpHeaders();
-    headers.set('Accept', 'application/json');
-
-    this.httpClient.get<Flight[]>(url, { params: { from: this.from, to: this.to }, headers }).subscribe((flights) => {
-      this.flights = flights;
-      console.log(this.flights);
+    this.flightService.searchFlights(this.from, this.to).subscribe((flights) => {
+      this.flights = flights
     });
   }
 }
