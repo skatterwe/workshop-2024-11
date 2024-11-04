@@ -20,24 +20,24 @@
       </div>
     </form>
 
-    @if(flights.length) {
+    @if (flights.length) {
       <table class="table table-condensed">
         <thead>
-        <tr>
-          <th>Id</th>
-          <th>From</th>
-          <th>To</th>
-          <th>Date</th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>Id</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           @for (flight of flights; track flight.id) {
-            <tr [ngClass]="{'selected': selectedFlight === flight.id}">
+            <tr [ngClass]="{ selected: selectedFlight === flight.id }">
               <th>{{ flight.id }}</th>
-              <th>{{ flight.from }}</th>
-              <th>{{ flight.to }}</th>
-              <th>{{ flight.date }}</th>
+              <th>{{ flight.from | city:'LONG' }}</th>
+              <th>{{ flight.to | city:'LONG' }}</th>
+              <th>{{ flight.date | date:'dd.MM.YY' }}</th>
               <th><button class="btn btn-link" (click)="select(flight)">Select</button></th>
             </tr>
           }
