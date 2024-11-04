@@ -3,11 +3,12 @@ import {Flight} from "./flight-search.types";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HighlightDirective} from "../highlight.directive";
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HighlightDirective],
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.css',
 })
@@ -24,9 +25,9 @@ export class FlightSearchComponent {
     const headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
 
-    this.httpClient.get<Flight[]>(url, {params: {from: this.from, to: this.to}, headers}).subscribe((flights) => {
+    this.httpClient.get<Flight[]>(url, { params: { from: this.from, to: this.to }, headers }).subscribe((flights) => {
       this.flights = flights;
-      console.log(this.flights)
+      console.log(this.flights);
     });
   }
 }
