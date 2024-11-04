@@ -13,7 +13,7 @@ export class CityPipe implements PipeTransform {
   transform(value: string, format: 'SHORT' | 'LONG' = 'SHORT'): string {
 
     // return this.mapper.toCityString(value, format); // Option 1 - for reusability in services
-    // return toCityName(value, format); // Option 2 - for reusability in services
+    // return toCityName(value, format); // Option 2 - for reusability in services => Angular way of providing their own pipes as transformer methods
 
     if(format === 'SHORT') {
       return this.formatCityShort(value)
