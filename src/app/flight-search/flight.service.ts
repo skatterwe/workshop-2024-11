@@ -9,12 +9,17 @@ import { Flight } from './flight-search.types';
 export class FlightService {
   constructor(private httpClient: HttpClient) {}
 
-  searchFlights(from: string, to: string): Observable<Flight[]> {
+  searchFlights(from: string, to?: string): Observable<Flight[]> {
     const url = 'https://demo.angulararchitects.io/api/flight';
 
     const headers = new HttpHeaders();
     headers.set('Accept', 'application/json');
 
-    return this.httpClient.get<Flight[]>(url, { params: { from: from, to: to }, headers });
+    let params: any = { from };
+    if (to) {
+      params['to'] = to;
+    }
+
+    return this.httpClient.get<Flight[]>(url, { params, headers });
   }
 }
