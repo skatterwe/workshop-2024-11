@@ -8,9 +8,7 @@ import {CityPipe} from "./city.pipe";
   providedIn: 'root',
 })
 export class FlightService {
-  constructor(private httpClient: HttpClient, private cityPipe: CityPipe) {
-
-    console.log(this.cityPipe.transform('FOO'))
+  constructor(private httpClient: HttpClient) {
   }
 
   searchFlights(from: string, to: string): Observable<Flight[]> {
