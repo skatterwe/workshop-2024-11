@@ -2,14 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from './flight-search.types';
-import {CityPipe} from "./city.pipe";
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlightService {
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   searchFlights(from: string, to: string): Observable<Flight[]> {
     const url = 'https://demo.angulararchitects.io/api/flight';

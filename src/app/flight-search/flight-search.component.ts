@@ -1,17 +1,17 @@
-import { CommonModule } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HighlightDirective } from '../highlight.directive';
 import { CityPipe } from './city.pipe';
+import { FlightCardComponent } from './flight-card/flight-card.component';
 import { Flight } from './flight-search.types';
 import { FlightService } from './flight.service';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, HighlightDirective, CityPipe],
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.css',
+  imports: [FormsModule, NgClass, DatePipe, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
   flights: Flight[] = [];
@@ -30,5 +30,13 @@ export class FlightSearchComponent {
 
   select(flight: Flight) {
     this.selectedFlight = flight.id;
+  }
+
+  onFlightSelectionChange(flightId: number, selected: boolean) {
+    if (selected) {
+      this.selectedFlight = flightId;
+    } else {
+      this.selectedFlight = null;
+    }
   }
 }

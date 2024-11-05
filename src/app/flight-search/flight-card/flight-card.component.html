@@ -1,0 +1,15 @@
+<div class="p-1" [ngClass]="{ selected }">
+  {{ selected }}
+
+  <h2>{{ flight.from }} - {{ flight.to }}</h2>
+  <p>Flight No: #{{ flight.id }}</p>
+  <p>Date: {{ flight.date | date: 'short' }}</p>
+
+  <p>
+    @if (!selected) {
+      <button (click)="selectFlight()">Select</button>
+    } @else {
+      <button (click)="deselectFlight()">Deselect</button>
+    }
+  </p>
+</div>
