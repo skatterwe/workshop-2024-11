@@ -20,7 +20,7 @@ export class FlightSearchComponent {
 
   flightService = inject(FlightService);
 
-  selectedFlight: number | null = null;
+  basket: Record<number, boolean> = {};
 
   searchFlight() {
     this.flightService.searchFlights(this.from, this.to).subscribe((flights) => {
@@ -28,15 +28,7 @@ export class FlightSearchComponent {
     });
   }
 
-  select(flight: Flight) {
-    this.selectedFlight = flight.id;
-  }
-
   onFlightSelectionChange(flightId: number, selected: boolean) {
-    if (selected) {
-      this.selectedFlight = flightId;
-    } else {
-      this.selectedFlight = null;
-    }
+    this.basket[flightId] = selected;
   }
 }

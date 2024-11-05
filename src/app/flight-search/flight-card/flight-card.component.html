@@ -1,15 +1,17 @@
-<div class="p-1" [ngClass]="{ selected }">
-  {{ selected }}
+<div class="card" [ngClass]="{ selected }">
+  <div class="card-header">
+    <h2 class="title">{{ flight.from }} - {{ flight.to }}</h2>
+  </div>
+  <div class="card-body">
+    <p>Flight No: #{{ flight.id }}</p>
+    <p>Date: {{ flight.date | date: 'short' }}</p>
 
-  <h2>{{ flight.from }} - {{ flight.to }}</h2>
-  <p>Flight No: #{{ flight.id }}</p>
-  <p>Date: {{ flight.date | date: 'short' }}</p>
-
-  <p>
-    @if (!selected) {
-      <button (click)="selectFlight()">Select</button>
-    } @else {
-      <button (click)="deselectFlight()">Deselect</button>
-    }
-  </p>
+    <p>
+      @if (!selected) {
+        <button class="btn btn-default" (click)="selectFlight()">Select</button>
+      } @else {
+        <button class="btn btn-default" (click)="deselectFlight()">Deselect</button>
+      }
+    </p>
+  </div>
 </div>

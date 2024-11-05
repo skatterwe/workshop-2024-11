@@ -1,9 +1,9 @@
 <div class="card">
-  <div class="header">
+  <div class="card-header">
     <h2 class="title">Flight Search</h2>
   </div>
 
-  <div class="content">
+  <div class="card-body">
     <form>
       <div class="form-group">
         <label for="from">From</label>
@@ -19,15 +19,19 @@
         <button class="btn btn-default" [disabled]="!from || !to" (click)="searchFlight()">Search</button>
       </div>
     </form>
+  </div>
+</div>
 
-    @if (flights.length) {
-      @for (flight of flights; track flight.id) {
+@if (flights.length) {
+  <div class="row row-cols-4">
+    @for (flight of flights; track flight.id) {
+      <div class="p-2">
         <app-flight-card
           (selectionChange)="onFlightSelectionChange(flight.id, $event)"
           [flight]="flight"
-          [selected]="selectedFlight === flight.id"
+          [selected]="basket[flight.id]"
         ></app-flight-card>
-      }
+      </div>
     }
   </div>
-</div>
+}
