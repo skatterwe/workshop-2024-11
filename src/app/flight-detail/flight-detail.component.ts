@@ -1,8 +1,8 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { debounceTime, filter, Observable, switchMap } from 'rxjs';
-import { Flight } from '../flight-search/flight-search.types';
-import { FlightService } from '../flight-search/flight.service';
+import { Flight } from '../flights/flight-search/flight-search.types';
+import { FlightService } from '../flights/flight-search/flight.service';
 
 @Component({
   selector: 'app-flight-detail',

@@ -3,7 +3,7 @@ import { Component, DestroyRef, OnDestroy, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-import { FlightDetailComponent } from '../flight-detail/flight-detail.component';
+import { FlightDetailComponent } from '../../flight-detail/flight-detail.component';
 import { CityPipe } from './city.pipe';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { Flight } from './flight-search.types';
