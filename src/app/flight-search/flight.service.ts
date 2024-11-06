@@ -22,4 +22,15 @@ export class FlightService {
 
     return this.httpClient.get<Flight[]>(url, { params, headers });
   }
+
+  getFlightById(id: number) {
+    const url = `https://demo.angulararchitects.io/api/flight`;
+
+    const headers = new HttpHeaders();
+    headers.set('Accept', 'application/json');
+
+    const params = { id };
+
+    return this.httpClient.get<Flight>(url, { params, headers });
+  }
 }

@@ -37,3 +37,19 @@
 }
 
 <app-flight-typeahead></app-flight-typeahead>
+
+<div class="pt-2">
+  @if (!withDetail) {
+    <button class="btn btn-default" (click)="withDetail = true">Show Flight Detail</button>
+  } @else {
+    <button class="btn btn-default" (click)="withDetail = false">Hide Flight Detail</button>
+  }
+
+  <div>
+    <input type="text" [formControl]="flightId" />
+  </div>
+
+  @if (withDetail) {
+    <app-flight-detail [flightId$]="flightId.valueChanges"></app-flight-detail>
+  }
+</div>
