@@ -1,9 +1,8 @@
 import { DatePipe, NgClass } from '@angular/common';
 import { Component, DestroyRef, OnDestroy, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-import { FlightDetailComponent } from '../../flight-detail/flight-detail.component';
 import { CityPipe } from './city.pipe';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { Flight } from './flight-search.types';
@@ -15,16 +14,7 @@ import { FlightService } from './flight.service';
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrl: './flight-search.component.css',
-  imports: [
-    FormsModule,
-    NgClass,
-    DatePipe,
-    CityPipe,
-    FlightCardComponent,
-    FlightTypeaheadComponent,
-    FlightDetailComponent,
-    ReactiveFormsModule,
-  ],
+  imports: [FormsModule, NgClass, DatePipe, CityPipe, FlightCardComponent, FlightTypeaheadComponent],
 })
 export class FlightSearchComponent implements OnDestroy {
   flights: Flight[] = [];

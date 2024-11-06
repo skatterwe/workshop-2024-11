@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Flight } from '../flight-search.types';
 
 @Component({
@@ -15,6 +16,9 @@ export class FlightCardComponent {
 
   @Output() selectionChange: EventEmitter<boolean> = new EventEmitter();
 
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
   // @Output() deselectFlight: EventEmitter<number> = new EventEmitter();
   // @Output() selectFlight: EventEmitter<number> = new EventEmitter();
 
@@ -24,5 +28,10 @@ export class FlightCardComponent {
 
   deselectFlight() {
     this.selectionChange.emit(false);
+  }
+
+  bookFlight() {
+    this.router.navigate([this.flight.id], { relativeTo: this.route });
+    // this.router.navigate(['flights', 'flight-search', this.flight.id]);
   }
 }
