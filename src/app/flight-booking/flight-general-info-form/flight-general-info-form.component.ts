@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlightBookingComponentDataService } from '../flight-booking-component-data.service';
@@ -5,7 +6,7 @@ import { FlightBookingComponentDataService } from '../flight-booking-component-d
 @Component({
   selector: 'app-flight-general-info-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, JsonPipe],
   templateUrl: './flight-general-info-form.component.html',
   styleUrl: './flight-general-info-form.component.css',
 })

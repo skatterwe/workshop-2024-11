@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { validateFlightNo } from './flight-booking.validators';
 
 @Injectable()
 export class FlightBookingComponentDataService {
@@ -7,7 +8,7 @@ export class FlightBookingComponentDataService {
 
   formGroup = this.fb.nonNullable.group({
     generalInfo: this.fb.nonNullable.group({
-      flightNo: ['', [Validators.required, Validators.minLength(5)]],
+      flightNo: ['', [Validators.required, validateFlightNo]],
     }),
     passengerInfo: this.fb.nonNullable.group({
       name: ['', Validators.required],

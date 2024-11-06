@@ -2,5 +2,7 @@
   <div class="form-group">
     <label for="flightNo">FlightNo</label>
     <input class="form-control" id="flightNo" type="text" formControlName="flightNo" />
+
+    {{ dataService.generalInfoForm.controls.flightNo.errors | json }}
   </div>
 </div>
