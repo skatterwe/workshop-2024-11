@@ -1,6 +1,8 @@
 <input type="text" [formControl]="formControl" />
 
-{{ flights$ | async | json }}
-{{ flights$ | async | json }}
-{{ flights$ | async | json }}
-{{ flights$ | async | json }}
+<div data-testid="flights-display">
+  {{ flights$ | async | json }}
+</div>
+<div>
+  {{ flights$ | async | json }}
+</div>
