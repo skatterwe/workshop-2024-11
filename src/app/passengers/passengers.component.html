@@ -1,1 +1,6 @@
-<p>passengers works!</p>
+<div>count: {{ counter }}</div>
+
+<button data-testid="increase-btn" (click)="increaseCounter()">Increase</button>
+@if (counter) {
+  <button data-testid="decrease-btn" (click)="decreaseCounter()">Decrease</button>
+}

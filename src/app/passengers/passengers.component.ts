@@ -5,8 +5,16 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './passengers.component.html',
-  styleUrl: './passengers.component.css'
+  styleUrl: './passengers.component.css',
 })
 export class PassengersComponent {
+  counter = 0;
 
+  increaseCounter() {
+    this.counter++;
+  }
+
+  decreaseCounter() {
+    this.counter--;
+  }
 }

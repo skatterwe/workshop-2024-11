@@ -3,14 +3,10 @@ import { FlightBookingComponent } from './flight-booking/flight-booking.componen
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 
 export const FLIGHTS_ROUTES: Routes = [
-  { path: 'flights', redirectTo: 'flights/flight-search', pathMatch: 'full' },
+  { path: '', redirectTo: 'flight-search', pathMatch: 'full' },
+  { path: 'flight-search', component: FlightSearchComponent, pathMatch: 'full' },
   {
-    path: 'flights/flight-search',
-    component: FlightSearchComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'flights/flight-search/:id',
+    path: 'flight-search/:id',
     component: FlightBookingComponent,
   },
 ];
