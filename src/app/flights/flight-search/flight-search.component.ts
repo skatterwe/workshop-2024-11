@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component, DestroyRef, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, DestroyRef, OnDestroy, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormsModule } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -24,6 +24,7 @@ export class FlightSearchComponent implements OnDestroy {
   flightService = inject(FlightService);
   // userConfigService = inject(UserConfigService);
   destroyRef = inject(DestroyRef);
+  ref = inject(ChangeDetectorRef);
 
   basket: Record<number, boolean> = {};
 
@@ -65,6 +66,11 @@ export class FlightSearchComponent implements OnDestroy {
     this.subs.push(
       flights$.subscribe((flights) => {
         this.flights = flights;
+
+        // this.ref.markForCheck(); // MANUAL CHANGE DETECTION NOTIFICATION IF ONPUSH SET FOR THE COMPONENT
+
+        // DON'T DO THIS
+        // this.ref.detectChanges()
       }),
     );
 
@@ -79,6 +85,21 @@ export class FlightSearchComponent implements OnDestroy {
 
   onFlightSelectionChange(flightId: number, selected: boolean) {
     this.basket[flightId] = selected;
+  }
+
+  delayFirstFlight() {
+    if (!this.flights.length) {
+      return;
+    }
+
+    const delay = 1000 * 60 * 15; // 15 minutes
+    const firstFlight = this.flights[0];
+
+    const date = new Date(firstFlight.date);
+    date.setTime(date.getTime() + delay);
+
+    const updatedFlight = { ...firstFlight, date: date.toISOString() };
+    this.flights = [updatedFlight, ...this.flights.slice(1)];
   }
 
   ngOnDestroy() {

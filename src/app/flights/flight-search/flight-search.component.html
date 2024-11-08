@@ -17,6 +17,7 @@
 
       <div class="form-group">
         <button class="btn btn-default" [disabled]="!from || !to" (click)="searchFlight()">Search</button>
+        <button class="btn btn-default" [disabled]="!flights.length" (click)="delayFirstFlight()">Delay</button>
       </div>
     </form>
   </div>

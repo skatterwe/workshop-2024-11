@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { injectCdBlink } from '../../../shared/blink';
 import { Flight } from '../flight-search.types';
 
 @Component({
@@ -9,8 +10,10 @@ import { Flight } from '../flight-search.types';
   imports: [CommonModule],
   templateUrl: './flight-card.component.html',
   styleUrl: './flight-card.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent {
+  blink = injectCdBlink();
   @Input({ required: true }) flight!: Flight;
   @Input() selected = false;
 
